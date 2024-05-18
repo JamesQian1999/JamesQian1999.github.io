@@ -9,15 +9,24 @@ profile:
   image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
-    <a href='/assets/pdf/example_pdf.pdf'>CV</a>
+    <div style="text-align: center;"><a href='/assets/pdf/ChengChien_CV.pdf'>CV / Resume</a></div>
 
 news: true # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+I am a graduate student in Computer Science at National Yang Ming Chiao Tung University, where I am deepening my knowledge in machine learning, software security, and network protocols. My current focus includes implementing advanced image compression systems and developing conditional VAE for video prediction.
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+Previously, I completed my Bachelor's degree in Computer Science and Engineering from National Sun Yat-sen University. My undergraduate studies included significant projects such as the implementation of the TCP protocol using UDP and studying Huffman compression algorithms. I also researched secure device pairing and access control for smart IoT devices.
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+I have contributed to the academic community through several publications:
+1. **TransTIC**: Transferring Transformer-based Image Compression from Human Visualization to Machine Perception (ICCV 2023)
+2. **Learned Hierarchical B-frame Coding** with Adaptive Feature Modulation for YUV 4:2:0 Content (ISCAS 2023)
+3. **Transformer-based Image Compression** with Variable Image Quality Objectives (APSIPA 2023)
+
+I have been honored with numerous scholarships and awards, including the Taiwan Imaging-Tek Corporation Scholarship, Excellent Student Awards, and the Cathay Financial Holdings Customer-Children Scholarship. 
+
+My programming skills include Python, C, and C++, and I hold certifications such as the TOEIC Blue Certificate and Advanced Level in Collegiate Programming Examination. I also enjoy teaching programming and have experience training students in logical abilities through Coding4Fun.
+
+Feel free to reach out to me via email at chengchien1999@gmail.com or connect with me on [LinkedIn](https://www.linkedin.com/in/cchien1999/). You can also explore my projects and contributions on my [GitHub](https://github.com/JamesQian1999) page.
