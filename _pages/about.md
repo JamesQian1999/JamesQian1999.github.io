@@ -29,4 +29,4 @@ I have been honored with numerous scholarships and awards, including the Taiwan 
 
 My programming skills include Python, C, and C++, and I hold certifications such as the TOEIC Blue Certificate and Advanced Level in Collegiate Programming Examination. I also enjoy teaching programming and have experience training students in logical abilities through Coding4Fun.
 
-Feel free to reach out to me via email at chengchien1999@gmail.com or connect with me on [LinkedIn](https://www.linkedin.com/in/cchien1999/). You can also explore my projects and contributions on my [GitHub](https://github.com/JamesQian1999) page.
+Feel free to reach out to me via email at chengchien1999@gmail.com or connect with me on LinkedIn.
