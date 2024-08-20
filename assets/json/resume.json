@@ -52,8 +52,8 @@
       "area": "Computer Sciences",
       "studyType": "Master",
       "startDate": "2022",
-      "endDate": "",
-      "//score": "10",
+      "endDate": "2024",
+      "score": "4.19/4.3",
       "//courses": ["Theory of Relativity"]
     },
     {
@@ -64,7 +64,7 @@
       "studyType": "Bachelor",
       "startDate": "2018",
       "endDate": "2022",
-      "//score": "10",
+      "score": "4.05/4.3",
       "//courses": ["Theory of Relativity"]
     }
   ],
@@ -197,6 +197,13 @@
     }
   ],
   "publications": [
+    {
+      "name": "ComNeck: Bridging Compressed Image Latents and Multimodal LLMs via Universal Transform-Neck",
+      "publisher": "Chia-Hao Kao, Cheng Chien, Yu-Jen Tseng, Yi-Hsin Chen, Alessandro Gnutti, Shao-Yuan Lo, Wen-Hsiao Peng, Riccardo Leonardi",
+      "releaseDate": "2024",
+      "url": "https://arxiv.org/abs/2407.19651",
+      "summary": "This paper presents the first-ever study of adapting compressed image latents to suit the needs of downstream vision tasks that adopt Multimodal Large Language Models (MLLMs). MLLMs have extended the success of large language models to modalities (e.g. images) beyond text, but their billion scale hinders deployment on resource-constrained end devices. While cloud-hosted MLLMs could be available, transmitting raw, uncompressed images captured by end devices to the cloud requires an efficient image compression system. To address this, we focus on emerging neural image compression and propose a novel framework with a lightweight transform-neck and a surrogate loss to adapt compressed image latents for MLLM-based vision tasks. The proposed framework is generic and applicable to multiple application scenarios, where the neural image codec can be (1) pre-trained for human perception without updating, (2) fully updated for joint human and machine perception, or (3) fully updated for only machine perception. The transform-neck trained with the surrogate loss is universal, for it can serve various downstream vision tasks enabled by a variety of MLLMs that share the same visual encoder. Our framework has the striking feature of excluding the downstream MLLMs from training the transform-neck, and potentially the neural image codec as well. This stands out from most existing coding for machine approaches that involve downstream networks in training and thus could be impractical when the networks are MLLMs. Extensive experiments on different neural image codecs and various MLLM-based vision tasks show that our method achieves great rate-accuracy performance with much less complexity, demonstrating its effectiveness."
+    },
     {
       "name": "TransTIC: Transferring Transformer-based Image Compression from Human Visualization to Machine Perception",
       "publisher": "Yi-Hsin Chen, Ying-Chieh Weng, Chia-Hao  Kao, Cheng Chien, Wei-Chen Chiu, and Wen-Hsiao Peng",

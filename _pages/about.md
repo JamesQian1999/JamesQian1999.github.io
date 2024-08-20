@@ -2,8 +2,7 @@
 layout: about
 title: About
 permalink: /
-subtitle: <a href='https://www.nycu.edu.tw/nycu/en/index'>National Yang Ming Chiao Tung University</a>, Computer Science
-
+subtitle: 
 profile:
   align: right
   image: prof_pic.jpg
@@ -11,22 +10,16 @@ profile:
   more_info: >
     <div style="text-align: center;"><a href='/assets/pdf/ChengChien_CV.pdf'>CV / Resume</a></div>
 
-news: true # includes a list of news items
+news: False # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-I am a graduate student in Computer Science at National Yang Ming Chiao Tung University, where I am deepening my knowledge in machine learning, software security, and network protocols. My current focus includes implementing advanced image compression systems and developing conditional VAE for video prediction.
+Feel free to reach out to me via email at <a href="mailto:chengchien1999@gmail.com">chengchien1999@gmail.com</a> or connect with me on <a href='https://www.linkedin.com/in/cchien1999/'>LinkedIn</a>.
 
-Previously, I completed my Bachelor's degree in Computer Science and Engineering from National Sun Yat-sen University. My undergraduate studies included significant projects such as the implementation of the TCP protocol using UDP and studying Huffman compression algorithms. I also researched secure device pairing and access control for smart IoT devices.
+I am a graduate student in Computer Science at  <a href='https://www.nycu.edu.tw/nycu/en/'>National Yang Ming Chiao Tung University</a>, specializing in Machine Learning, Computer Vision, and Image Compression. My recent research focuses on integrating Neural Image Compression with Multimodal Large Language Models. I am proficient in Python and C++, with extensive experience in building machine learning models using PyTorch. Additionally, I possess strong English communication skills and have presented my research at conferences such as APSIPA ASC.
 
-I have contributed to the academic community through several publications:
-1. **TransTIC**: Transferring Transformer-based Image Compression from Human Visualization to Machine Perception (ICCV 2023)
-2. **Learned Hierarchical B-frame Coding** with Adaptive Feature Modulation for YUV 4:2:0 Content (ISCAS 2023)
-3. **Transformer-based Image Compression** with Variable Image Quality Objectives (APSIPA 2023)
-
-I have been honored with numerous scholarships and awards, including the Taiwan Imaging-Tek Corporation Scholarship, Excellent Student Awards, and the Cathay Financial Holdings Customer-Children Scholarship. 
-
-My programming skills include Python, C, and C++, and I hold certifications such as the TOEIC Blue Certificate and Advanced Level in Collegiate Programming Examination. I also enjoy teaching programming and have experience training students in logical abilities through Coding4Fun.
+I earned my M.S. in Computer Science from National Yang Ming Chiao Tung University in 2024, under the guidance of <a href='https://sites.google.com/g2.nctu.edu.tw/wpeng/'>
+Prof. Wen-Hsiao Peng</a>. Prior to this, I completed my B.S. in Computer Science and Engineering at  <a href='https://www.nsysu.edu.tw/?Lang=en'>National Sun Yat-sen University</a> in 2022.
 
 Feel free to reach out to me via email at chengchien1999@gmail.com or connect with me on LinkedIn.
