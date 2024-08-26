@@ -6,13 +6,13 @@
     "email": "chengchien1999@gmail.com",
     "phone": "(886) 989819022",
     "url": "https://www.linkedin.com/in/cchien1999",
-    "summary": "I am a computer science student with a robust background in machine learning, specializing in image coding for machines and multimodal large language models.",
+    "summary": "I hold a degree in Computer Science with a strong specialization in machine learning, focusing on image coding techniques and multimodal large language models.",
     "location": {
-      "address": "2712 Broadway St",
-      "postalCode": "CA 94115",
-      "city": "San Francisco",
-      "countryCode": "US",
-      "region": "California"
+      "//address": "2712 Broadway St",
+      "//postalCode": "CA 94115",
+      "city": "Taipei",
+      "countryCode": "Taiwan",
+      "//region": "California"
     },
     "profiles": [
       {
@@ -33,15 +33,14 @@
       "highlights": ["Relativity"]
     }
   ],
-  "//volunteer": [
+  "volunteer": [
     {
-      "organization": "People's Climate March",
-      "position": "Lead Organizer",
-      "url": "https://example.com",
-      "startDate": "2014-04-01",
-      "endDate": "2015-07-01",
-      "summary": "Lead organizer for the New York City branch of the People's Climate March, the largest climate march in history.",
-      "highlights": ["Awarded 'Climate Hero' award by Greenpeace for my efforts organizing the march.", "Men of the year 2014 by Time magazine"]
+      "organization": "Taiwan Happy Coding Promotion Association",
+      "position": "Outreach Instructor",
+      "url": "https://coding4taiwan.org/",
+      "startDate": "2021-01-01",
+      "endDate": "2024-01-01",
+      "summary": "Dedicated to promoting programming skills and sparking interest in technology among Taiwanese children. Experienced in designing and delivering engaging educational programs that inspire young learners to explore the world of coding and computer science."
     }
   ],
   "education": [
@@ -120,7 +119,6 @@
       "icon": "fa-solid fa-hashtag",
       "keywords": [
         "Python",
-        "C",
         "C++"
       ]
     },
@@ -129,7 +127,10 @@
       "level": "Master",
       "icon": "fa-solid fa-hashtag",
       "keywords": [
-        "Pytorch"
+        "Pytorch",
+        "Multimodal Large Language Models",
+        "Image Coding for Machine",
+        "Image Compression"
       ]
     }
   ],
@@ -150,8 +151,9 @@
       "name": "Machine Learning",
       "icon": "fa-solid fa-tag",
       "keywords": [
-        "Image coding for machine",
-        "Multimodal Large language models"
+        "Multimodal Large Language Models",
+        "Image Coding for Machine",
+        "Image Compression"
       ]
     }
   ],
@@ -189,11 +191,9 @@
       "awarder": "New Taipei City Apartment Building Management Services Occupational Union"
     },
     {
-      "//title": "Nobel Prize in Physics",
-      "//date": "1921-11-01",
-      "//awarder": "Royal Swedish Academy of Sciences",
-      "//url": "https://www.nobelprize.org/prizes/physics/1921/einstein/biographical/",
-      "//summary": "The Nobel Prizes are five separate prizes that, according to Alfred Nobel's will of 1895, are awarded to 'those who, during the preceding year, have conferred the greatest benefit to humankind.'"
+      "title": "Top Creativity Award",
+      "date": "2023-05-21",
+      "awarder": "IEEE International Symposium on Circuits and Systems (ISCAS)"
     }
   ],
   "publications": [
