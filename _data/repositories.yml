@@ -1,12 +1,8 @@
 github_users:
-  - torvalds
-  - alshedivat
+  - JamesQian1999
+  - NYCU-MAPL
 
 github_repos:
-  - alshedivat/al-folio
-  - twbs/bootstrap
-  - jekyll/jekyll
-  - jquery/jquery
-  - FortAwesome/Font-Awesome
-  - jpswalsh/academicons
-  - mathjax/MathJax
+  - JamesQian1999/macOS-NFC-Tool
+  - NYCU-MAPL/TransTIC
+  - NYCU-MAPL/Transformer_VariableROI
