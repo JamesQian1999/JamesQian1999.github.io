@@ -1,0 +1,26 @@
+---
+name: Cheng Chien
+email: chengchien1999@gmail.com
+phone: "(886) 989819022"
+url: https://www.linkedin.com/in/cchien1999
+summary: I hold a degree in Computer Science with a strong specialization in machine
+  learning, focusing on image coding techniques and multimodal large language models.
+display_name: Cheng Chien 錢承
+location: Taipei, Taiwan
+photo: "/assets/img/prof_pic.jpg"
+cv_pdf: "/assets/pdf/ChengChien_CV.pdf"
+github_url: https://github.com/jamesqian1999
+scholar_url: https://scholar.google.com/citations?user=jiW_WgUAAAAJ
+social:
+- label: Email
+  field: email
+  icon: email
+- label: GitHub
+  field: github_url
+  icon: github
+- label: LinkedIn
+  field: url
+  icon: linkedin
+- label: Google Scholar
+  field: scholar_url
+  icon: scholar

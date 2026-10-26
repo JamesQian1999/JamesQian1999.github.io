@@ -1,0 +1,15 @@
+<ul class="publication-list">
+  {% for paper in include.papers %}
+  <li class="publication" id="{{ paper.id | escape }}">
+    <img class="publication-preview" src="{{ paper.preview | relative_url }}" alt="Overview of {{ paper.title | escape }}" width="360" height="240" loading="lazy">
+    <div>
+      <h3 class="publication-title">{{ paper.title | escape }}</h3>
+      <p class="authors">{% for author in paper.authors %}{% assign author_name = author | remove: '*' %}{% if author_name == site.data.profile.name %}<strong>{{ author | escape }}</strong>{% else %}{{ author | escape }}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}</p>
+      <p class="venue">{{ paper.venue | escape }}, {{ paper.year }}</p>
+      <ul class="paper-links" aria-label="Links for {{ paper.title | escape }}">
+        {% for link in paper.links %}<li><a class="button" href="{{ link.url | escape }}">{{ link.label | escape }}</a></li>{% endfor %}
+      </ul>
+    </div>
+  </li>
+  {% endfor %}
+</ul>

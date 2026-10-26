@@ -1,8 +1,10 @@
-github_users:
-  - JamesQian1999
-  - NYCU-MAPL
-
-github_repos:
-  - JamesQian1999/macOS-NFC-Tool
-  - NYCU-MAPL/TransTIC
-  - NYCU-MAPL/Transformer_VariableROI
+---
+- name: macOS-NFC-Tool
+  owner: JamesQian1999
+  url: https://github.com/JamesQian1999/macOS-NFC-Tool
+- name: TransTIC
+  owner: NYCU-MAPL
+  url: https://github.com/NYCU-MAPL/TransTIC
+- name: Transformer_VariableROI
+  owner: NYCU-MAPL
+  url: https://github.com/NYCU-MAPL/Transformer_VariableROI

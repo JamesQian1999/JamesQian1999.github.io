@@ -1,0 +1,6 @@
+<nav class="contact-links" aria-label="Contact and social profiles">
+  {% for link in site.data.profile.social %}
+  {% assign contact_url = site.data.profile[link.field] %}
+  <a href="{% if link.field == 'email' %}mailto:{% endif %}{{ contact_url | escape }}">{% include icon.html name=link.icon %}<span>{{ link.label | escape }}</span></a>
+  {% endfor %}
+</nav>

@@ -1,11 +1,8 @@
 ---
-layout: cv
-permalink: /cv/
+layout: default
 title: CV
-nav: true
-nav_order: 5
-cv_pdf: ChengChien_CV.pdf
-description: 
-toc:
-  sidebar: left
+permalink: /cv/
 ---
+
+<p><a class="button" href="{{ site.data.profile.cv_pdf | relative_url }}">Download CV / Resume (PDF)</a></p>
+{% include cv.html %}
