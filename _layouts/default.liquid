@@ -22,10 +22,12 @@
       </nav>
     </header>
     <main id="main" tabindex="-1">
+      {% unless page.url == '/' %}
       <div class="page-heading">
         <h1>{% if page.url == '/' %}{{ site.data.profile.display_name | escape }}{% elsif page.url == '/cv/' %}Curriculum vitae{% else %}{{ page.title | escape }}{% endif %}</h1>
         {% if page.url == '/cv/' %}<a class="button button-primary" href="{{ site.data.profile.cv_pdf | relative_url }}">Download CV <span aria-hidden="true">↓</span> <span>(PDF)</span></a>{% endif %}
       </div>
+      {% endunless %}
       {{ content }}
     </main>
     <footer class="site-footer">© {{ site.time | date: '%Y' }} {{ site.data.profile.display_name | escape }}.</footer>

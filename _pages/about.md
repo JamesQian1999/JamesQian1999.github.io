@@ -4,14 +4,31 @@ title: About
 permalink: /
 ---
 
-<aside class="profile">
-  <img src="{{ site.data.profile.photo | relative_url }}" alt="Portrait of {{ site.data.profile.name | escape }}" width="1969" height="2130" fetchpriority="high">
-  <a class="profile-cv" href="{{ site.data.profile.cv_pdf | relative_url }}">CV / Resume</a>
-</aside>
+<section class="home-hero" aria-labelledby="home-heading">
+  <div class="hero-content">
+    <h1 id="home-heading">{{ site.data.profile.display_name | escape }}</h1>
+    <p class="hero-eyebrow">Top Skills:</p>
+    <p class="hero-specialties">Machine Learning (ML), Computer Vision (CV), Image Compression, Multimodal Large Language Models (MLLM)</p>
+    <a class="button button-primary hero-resume" href="{{ site.data.profile.cv_pdf | relative_url }}">CV / Resume <span aria-hidden="true">↓</span></a>
+    {% include contact.html %}
+  </div>
+  <div class="hero-portrait">
+    <img src="{{ site.data.profile.photo | relative_url }}" alt="Portrait of {{ site.data.profile.name | escape }}" width="665" height="720" fetchpriority="high">
+  </div>
+</section>
 
-**Top Skills:**
+<section class="selected-publications" aria-labelledby="selected-heading">
+  <div class="section-heading">
+    <h2 id="selected-heading"><a href="{{ '/publications/' | relative_url }}">Selected Publications</a></h2>
+    <a class="section-link" href="{{ '/publications/' | relative_url }}">Publications <span aria-hidden="true">↗</span></a>
+  </div>
+  {% assign selected_papers = site.data.publications | where: 'selected', true | group_by: 'year' | sort: 'name' | reverse %}
+  {% for year in selected_papers %}{% include publications.html papers=year.items %}{% endfor %}
+</section>
 
-***Machine Learning (ML), Computer Vision (CV), Image Compression, Multimodal Large Language Models (MLLM)***
+<section class="home-about" aria-labelledby="about-heading">
+  <h2 id="about-heading">{{ page.title }}</h2>
+  <div class="about-body" markdown="1">
 
 My name is Chien Cheng, and I hold a Master’s degree in Computer Science from [National Yang Ming Chiao Tung University](https://www.nycu.edu.tw/nycu/en/). My master’s research focuses on machine learning, computer vision, image compression, and multimodal large language models (MLLM). My master’s thesis, titled “[ComNeck: Bridging Compressed Image Latents and Multimodal LLMs via Universal Transform-Neck](https://hdl.handle.net/20.500.14371/3093),” combines learning-base image compression with a multimodal language model. This work has been submitted to the international conference ICLR and is currently under review.
 
@@ -23,10 +40,5 @@ I earned my M.S. in Computer Science from National Yang Ming Chiao Tung Universi
 
 Feel free to reach out via [email](mailto:{{ site.data.profile.email }}) or connect with me on [LinkedIn]({{ site.data.profile.url }}).
 
-<section class="selected-publications" aria-labelledby="selected-heading">
-  <h2 id="selected-heading"><a href="{{ '/publications/' | relative_url }}">Selected Publications</a></h2>
-  {% assign selected_papers = site.data.publications | where: 'selected', true | group_by: 'year' | sort: 'name' | reverse %}
-  {% for year in selected_papers %}{% include publications.html papers=year.items %}{% endfor %}
+  </div>
 </section>
-
-{% include contact.html %}
