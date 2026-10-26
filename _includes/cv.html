@@ -1,91 +1,130 @@
 {% assign profile = site.data.profile %}
 {% assign cv = site.data.cv %}
-<div class="cv">
-  <section id="basics" class="cv-section" aria-labelledby="basics-heading">
-    <h2 id="basics-heading">Basics</h2>
-    <dl class="facts">
-      <dt>Name</dt><dd>{{ profile.name | escape }}</dd>
-      <dt>Email</dt><dd><a href="mailto:{{ profile.email | escape }}">{{ profile.email | escape }}</a></dd>
-      <dt>Phone</dt><dd>{{ profile.phone | escape }}</dd>
-      <dt>Location</dt><dd>{{ profile.location | escape }}</dd>
-      <dt>LinkedIn</dt><dd><a href="{{ profile.url | escape }}">{{ profile.url | escape }}</a></dd>
-    </dl>
-    <p>{{ profile.summary | escape }}</p>
-  </section>
+<div class="cv-layout">
+  <nav class="cv-toc" aria-label="CV sections">
+    <p class="cv-toc-label">On this page</p>
+    <ul>
+      <li><a href="#basics">Overview</a></li>
+      {% if cv.education.size > 0 %}<li><a href="#education">Education</a></li>{% endif %}
+      <li><a href="#publications">Publications</a></li>
+      {% if cv.skills.size > 0 %}<li><a href="#skills">Skills</a></li>{% endif %}
+      {% if cv.languages.size > 0 %}<li><a href="#languages">Languages</a></li>{% endif %}
+      {% if cv.awards.size > 0 %}<li><a href="#awards">Awards</a></li>{% endif %}
+      {% if cv.volunteer.size > 0 %}<li><a href="#volunteer">Volunteer</a></li>{% endif %}
+      {% if cv.interests.size > 0 %}<li><a href="#interests">Interests</a></li>{% endif %}
+    </ul>
+  </nav>
 
-  {% if cv.volunteer.size > 0 %}
-  <section id="volunteer" class="cv-section" aria-labelledby="volunteer-heading">
-    <h2 id="volunteer-heading">Volunteer</h2>
-    {% for entry in cv.volunteer %}
-    <article class="cv-entry">
-      <p class="entry-date">{{ entry.startDate | escape }} – {{ entry.endDate | escape }}</p>
-      <h3><a href="{{ entry.url | escape }}">{{ entry.position | escape }}</a></h3>
-      <p>{{ entry.organization | escape }}</p>
-      <p>{{ entry.summary | escape }}</p>
-    </article>
-    {% endfor %}
-  </section>
-  {% endif %}
+  <div class="cv">
+    <section id="basics" class="cv-section" aria-labelledby="basics-heading">
+      <h2 id="basics-heading">Overview</h2>
+      <p class="cv-summary">{{ profile.summary | escape }}</p>
+      <dl class="facts">
+        <dt>Name</dt><dd>{{ profile.name | escape }}</dd>
+        <dt>Email</dt><dd><a href="mailto:{{ profile.email | escape }}">{{ profile.email | escape }}</a></dd>
+        <dt>Phone</dt><dd>{{ profile.phone | escape }}</dd>
+        <dt>Location</dt><dd>{{ profile.location | escape }}</dd>
+        <dt>LinkedIn</dt><dd><a href="{{ profile.url | escape }}">View profile <span aria-hidden="true">↗</span></a></dd>
+      </dl>
+    </section>
 
-  {% if cv.education.size > 0 %}
-  <section id="education" class="cv-section" aria-labelledby="education-heading">
-    <h2 id="education-heading">Education</h2>
-    {% for entry in cv.education %}
-    <article class="cv-entry">
-      <p class="entry-date">{{ entry.startDate | escape }} – {{ entry.endDate | escape }}</p>
-      <h3><a href="{{ entry.url | escape }}">{{ entry.studyType | escape }}</a></h3>
-      <p>{{ entry.institution | escape }}<br>{{ entry.area | escape }}</p>
-      {% if entry.score %}<p class="muted">GPA: {{ entry.score | escape }}</p>{% endif %}
-    </article>
-    {% endfor %}
-  </section>
-  {% endif %}
+    {% if cv.education.size > 0 %}
+    <section id="education" class="cv-section" aria-labelledby="education-heading">
+      <h2 id="education-heading">Education</h2>
+      {% for entry in cv.education %}
+      <article class="cv-entry">
+        <p class="entry-date">{{ entry.startDate | escape }} – {{ entry.endDate | escape }}</p>
+        <div>
+          <h3><a href="{{ entry.url | escape }}">{{ entry.institution | escape }}</a></h3>
+          <p>{{ entry.studyType | escape }} · {{ entry.area | escape }}</p>
+          {% if entry.score %}<p class="entry-description">GPA: {{ entry.score | escape }}</p>{% endif %}
+        </div>
+      </article>
+      {% endfor %}
+    </section>
+    {% endif %}
 
-  {% if cv.skills.size > 0 %}
-  <section id="skills" class="cv-section" aria-labelledby="skills-heading">
-    <h2 id="skills-heading">Skills</h2>
-    <dl class="facts">{% for entry in cv.skills %}<dt>{{ entry.name | escape }}</dt><dd>{{ entry.keywords | join: ', ' | escape }}</dd>{% endfor %}</dl>
-  </section>
-  {% endif %}
+    <section id="publications" class="cv-section" aria-labelledby="cv-publications-heading">
+      <h2 id="cv-publications-heading">Publications</h2>
+      {% assign papers_by_year = site.data.publications | group_by: 'year' | sort: 'name' | reverse %}
+      {% for year in papers_by_year %}{% for paper in year.items %}
+      <article class="cv-entry" id="{{ paper.id | escape }}">
+        <p class="entry-date">{{ paper.year }}</p>
+        <div>
+          <h3><a href="{{ paper.links.first.url | escape }}">{{ paper.title | escape }}</a></h3>
+          <p class="authors">{% for author in paper.authors %}{% assign author_name = author | remove: '*' %}{% if author_name == profile.name %}<strong>{{ author | escape }}</strong>{% else %}{{ author | escape }}{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}</p>
+          <p class="venue">{{ paper.venue | escape }}</p>
+          {% if paper.summary %}
+          <details class="abstract">
+            <summary>Read abstract</summary>
+            <p>{{ paper.summary | escape }}</p>
+          </details>
+          {% endif %}
+        </div>
+      </article>
+      {% endfor %}{% endfor %}
+    </section>
 
-  {% if cv.languages.size > 0 %}
-  <section id="languages" class="cv-section" aria-labelledby="languages-heading">
-    <h2 id="languages-heading">Languages</h2>
-    <dl class="facts">{% for entry in cv.languages %}<dt>{{ entry.language | escape }}</dt><dd>{{ entry.fluency | escape }}</dd>{% endfor %}</dl>
-  </section>
-  {% endif %}
+    {% if cv.skills.size > 0 %}
+    <section id="skills" class="cv-section cv-skills" aria-labelledby="skills-heading">
+      <h2 id="skills-heading">Skills</h2>
+      <dl class="facts">
+        {% for entry in cv.skills %}
+        <dt>{{ entry.name | escape }}</dt>
+        <dd><ul class="skill-tags">{% for keyword in entry.keywords %}<li>{{ keyword | escape }}</li>{% endfor %}</ul></dd>
+        {% endfor %}
+      </dl>
+    </section>
+    {% endif %}
 
-  {% if cv.interests.size > 0 %}
-  <section id="interests" class="cv-section" aria-labelledby="interests-heading">
-    <h2 id="interests-heading">Interests</h2>
-    {% for entry in cv.interests %}<p><strong>{{ entry.name | escape }}</strong><br>{{ entry.keywords | join: ', ' | escape }}</p>{% endfor %}
-  </section>
-  {% endif %}
+    {% if cv.languages.size > 0 %}
+    <section id="languages" class="cv-section" aria-labelledby="languages-heading">
+      <h2 id="languages-heading">Languages</h2>
+      <dl class="facts">{% for entry in cv.languages %}<dt>{{ entry.language | escape }}</dt><dd>{{ entry.fluency | escape }}</dd>{% endfor %}</dl>
+    </section>
+    {% endif %}
 
-  {% if cv.awards.size > 0 %}
-  <section id="awards" class="cv-section" aria-labelledby="awards-heading">
-    <h2 id="awards-heading">Awards</h2>
-    {% for entry in cv.awards %}
-    <article class="cv-entry">
-      {% if entry.date %}<p class="entry-date">{{ entry.date | escape }}</p>{% endif %}
-      <h3>{{ entry.title | escape }}</h3>
-      <p>{{ entry.awarder | escape }}</p>
-    </article>
-    {% endfor %}
-  </section>
-  {% endif %}
+    {% if cv.awards.size > 0 %}
+    <section id="awards" class="cv-section" aria-labelledby="awards-heading">
+      <h2 id="awards-heading">Awards</h2>
+      {% for entry in cv.awards %}
+      <article class="cv-entry">
+        <p class="entry-date">{% if entry.date %}{{ entry.date | escape }}{% endif %}</p>
+        <div>
+          <h3>{{ entry.title | escape }}</h3>
+          <p class="entry-description">{{ entry.awarder | escape }}</p>
+        </div>
+      </article>
+      {% endfor %}
+    </section>
+    {% endif %}
 
-  <section id="publications" class="cv-section" aria-labelledby="cv-publications-heading">
-    <h2 id="cv-publications-heading">Publications</h2>
-    {% assign papers_by_year = site.data.publications | group_by: 'year' | sort: 'name' | reverse %}
-    {% for year in papers_by_year %}{% for paper in year.items %}
-    <article class="cv-entry" id="{{ paper.id | escape }}">
-      <p class="entry-date">{{ paper.year }}</p>
-      <h3><a href="{{ paper.links.first.url | escape }}">{{ paper.title | escape }}</a></h3>
-      <p>{{ paper.authors | join: ', ' | escape }}</p>
-      <p class="venue">{{ paper.venue | escape }}</p>
-      {% if paper.summary %}<p>{{ paper.summary | escape }}</p>{% endif %}
-    </article>
-    {% endfor %}{% endfor %}
-  </section>
+    {% if cv.volunteer.size > 0 %}
+    <section id="volunteer" class="cv-section" aria-labelledby="volunteer-heading">
+      <h2 id="volunteer-heading">Volunteer</h2>
+      {% for entry in cv.volunteer %}
+      <article class="cv-entry">
+        <p class="entry-date">{{ entry.startDate | escape }} – {{ entry.endDate | escape }}</p>
+        <div>
+          <h3><a href="{{ entry.url | escape }}">{{ entry.position | escape }}</a></h3>
+          <p>{{ entry.organization | escape }}</p>
+          <p class="entry-description">{{ entry.summary | escape }}</p>
+        </div>
+      </article>
+      {% endfor %}
+    </section>
+    {% endif %}
+
+    {% if cv.interests.size > 0 %}
+    <section id="interests" class="cv-section cv-skills" aria-labelledby="interests-heading">
+      <h2 id="interests-heading">Interests</h2>
+      <dl class="facts">
+        {% for entry in cv.interests %}
+        <dt>{{ entry.name | escape }}</dt>
+        <dd><ul class="skill-tags">{% for keyword in entry.keywords %}<li>{{ keyword | escape }}</li>{% endfor %}</ul></dd>
+        {% endfor %}
+      </dl>
+    </section>
+    {% endif %}
+  </div>
 </div>

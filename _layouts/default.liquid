@@ -9,7 +9,7 @@
     <link rel="icon" href="{{ '/assets/img/icon.png' | relative_url }}">
     <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
   </head>
-  <body>
+  <body class="page-{{ page.title | slugify }}">
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
       <nav class="site-nav" aria-label="Main navigation">
@@ -22,7 +22,10 @@
       </nav>
     </header>
     <main id="main" tabindex="-1">
-      <h1>{% if page.url == '/' %}{{ site.data.profile.display_name | escape }}{% else %}{{ page.title | escape }}{% endif %}</h1>
+      <div class="page-heading">
+        <h1>{% if page.url == '/' %}{{ site.data.profile.display_name | escape }}{% elsif page.url == '/cv/' %}Curriculum vitae{% else %}{{ page.title | escape }}{% endif %}</h1>
+        {% if page.url == '/cv/' %}<a class="button button-primary" href="{{ site.data.profile.cv_pdf | relative_url }}">Download CV <span aria-hidden="true">↓</span> <span>(PDF)</span></a>{% endif %}
+      </div>
       {{ content }}
     </main>
     <footer class="site-footer">© {{ site.time | date: '%Y' }} {{ site.data.profile.display_name | escape }}.</footer>
