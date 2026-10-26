@@ -2,6 +2,10 @@
 
 Local verification recorded on 2026-10-26 (Asia/Taipei), on branch `codex/lightweight-jekyll`, before publication. GitHub Pages settings are unchanged.
 
+## Current page structure
+
+The separate Repositories page was removed after the layout review because its projects duplicate Publications. Navigation now contains About, Publications, and CV. The repository page, data file, and dedicated styles are removed; publication code links and the GitHub profile link remain. The current verifier expects four HTML pages including 404 and checks that the removed page and navigation links are absent. Earlier measurements below describe the original migration checkpoint.
+
 ## Implementation
 
 - Four main routes, the custom 404 page, and the existing CV PDF URL are preserved.

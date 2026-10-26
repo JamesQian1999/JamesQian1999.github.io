@@ -24,8 +24,6 @@ navigation:
     url: /
   - title: Publications
     url: /publications/
-  - title: Repositories
-    url: /repositories/
   - title: CV
     url: /cv/
 

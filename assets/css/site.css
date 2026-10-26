@@ -58,14 +58,10 @@ main { width: 100%; flex: 1; max-width: calc(var(--width) + 4rem); margin: 3.5re
 .year-heading { font-size: .8rem; letter-spacing: .08em; font-weight: 600; border-bottom: 1px solid var(--line); padding-bottom: .8rem; margin: 2.75rem 0 1.75rem; color: var(--muted); }
 .muted, .entry-date { color: var(--muted); }
 .contact-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem 1.75rem; border-top: 1px solid var(--line); padding-top: 2rem; margin-top: 3rem; }
-.contact-links a, .repository-title { display: inline-flex; align-items: center; gap: .6rem; }
+.contact-links a { display: inline-flex; align-items: center; gap: .6rem; }
 .contact-links a { color: #65666e; font-size: .8rem; }
 .contact-links a:hover { color: var(--accent); }
 .icon { width: 1.2rem; height: 1.2rem; flex-shrink: 0; }
-.repositories { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
-.repository { border: 1px solid var(--line); border-radius: 8px; padding: 1.5rem; }
-.repository-title { font-size: .95rem; font-weight: 600; color: var(--text); }
-.repository p { margin: .75rem 0 0; font-size: .8rem; }
 .page-cv main { max-width: 1100px; }
 .page-cv .page-heading { padding-bottom: 2rem; border-bottom: 1px solid var(--line); margin-bottom: 2.5rem; }
 .cv-layout { display: grid; grid-template-columns: 155px minmax(0, 1fr); gap: 3.5rem; align-items: start; }
@@ -120,7 +116,6 @@ main { width: 100%; flex: 1; max-width: calc(var(--width) + 4rem); margin: 3.5re
   .publication-title { font-size: .9rem; }
   .authors { font-size: .8rem; }
   .venue { font-size: .75rem; }
-  .repositories { grid-template-columns: 1fr; }
   .cv-layout { gap: 1.5rem; }
   .cv-toc ul { gap: .15rem 1.25rem; }
   .cv-section { padding: 1.75rem 0; }

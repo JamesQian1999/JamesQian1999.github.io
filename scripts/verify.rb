@@ -11,8 +11,9 @@ site = Pathname.new(ARGV.fetch(0, root.join("_site").to_s)).expand_path
 baseurl = ARGV.fetch(1, "")
 errors = []
 check = ->(condition, message) { errors << message unless condition }
-pages = ["index.html", "publications/index.html", "repositories/index.html", "cv/index.html", "404.html"]
+pages = ["index.html", "publications/index.html", "cv/index.html", "404.html"]
 pages.each { |path| check.call(site.join(path).file?, "Missing page: #{path}") }
+check.call(!site.join("repositories/index.html").exist?, "Removed Repositories page still exists")
 abort errors.join("\n") unless errors.empty?
 
 html_pages = site.glob("**/*.html")
@@ -23,6 +24,7 @@ html_pages.each do |file|
   check.call(html.scan(/<h1\b/).size == 1, "#{relative}: expected one main heading")
   check.call(!html.match?(/\{[{%]/), "#{relative}: unrendered template syntax")
   check.call(!html.match?(/<script\b/i), "#{relative}: unexpected JavaScript")
+  check.call(!html.include?("/repositories/"), "#{relative}: removed Repositories link remains")
   ids = html.scan(/\bid="([^"]+)"/).flatten
   check.call(ids.uniq == ids, "#{relative}: duplicate HTML IDs")
   check.call(html.include?('href="#main"'), "#{relative}: missing skip link")
@@ -66,10 +68,6 @@ papers.each do |paper|
     check.call(publications.include?(CGI.escapeHTML(link.fetch("url"))), "Missing publication link #{link['url']}")
   end
 end
-repositories = YAML.safe_load_file(root.join("_data/repositories.yml"))
-repositories.each do |repo|
-  check.call(site.join("repositories/index.html").read.include?(CGI.escapeHTML(repo.fetch("url"))), "Missing repository #{repo['name']}")
-end
 profile = YAML.safe_load_file(root.join("_data/profile.yml"))
 check.call(site.join(profile.fetch("cv_pdf").delete_prefix("/")).read(5) == "%PDF-", "CV download is not a PDF")
 
@@ -77,10 +75,11 @@ sitemap = REXML::Document.new(site.join("sitemap.xml").read)
 locations = REXML::XPath.match(sitemap, "//*[local-name()='loc']").map(&:text)
 config = YAML.safe_load_file(root.join("_config.yml"))
 site_url = config.fetch("url") + baseurl
-%w[/ /publications/ /repositories/ /cv/].each do |route|
+%w[/ /publications/ /cv/].each do |route|
   check.call(locations.include?(site_url + route), "Missing sitemap route #{route}")
 end
 check.call(locations.none? { |url| url.include?("/assets/") || url.end_with?("/404.html") }, "Sitemap includes assets or 404")
+check.call(locations.none? { |url| url.include?("/repositories/") }, "Sitemap includes removed Repositories page")
 
 abort errors.join("\n") unless errors.empty?
-puts "PASS: #{pages.size} pages, #{papers.size} publications, #{repositories.size} repositories, local references, anchors, PDF, sitemap, and JavaScript-free output."
+puts "PASS: #{pages.size} pages, #{papers.size} publications, local references, anchors, PDF, sitemap, no Repositories page, and JavaScript-free output."
