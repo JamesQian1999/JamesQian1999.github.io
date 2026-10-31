@@ -20,21 +20,29 @@ JEKYLL_ENV=production bundle exec jekyll build --trace
 bundle exec ruby scripts/verify.rb
 ```
 
-`_site/` is generated output and is not committed. The verifier checks the four HTML pages (including 404), local links, image paths, anchors, shared publication data, PDF download, sitemap, and absence of JavaScript or a separate Repositories page.
+`_site/` is generated output and is not committed. The verifier checks the four HTML pages (including 404), local links, image paths, anchors, shared publication and work data, the professional summary, PDF download, sitemap, and absence of JavaScript or a separate Repositories page.
 
 ## Where to edit
 
 | Change | Source |
 | --- | --- |
 | Biography and top skills | `_pages/about.md` |
-| Name, contact details, social links, portrait, PDF path | `_data/profile.yml` |
-| Education, volunteer experience, skills, languages, interests, awards | `_data/cv.yml` |
+| Name, professional summary, contact details, social links, portrait, PDF path | `_data/profile.yml` |
+| Work experience, education, volunteer experience, skills, languages, interests, awards | `_data/cv.yml` |
 | Publications used by the homepage, Publications, and CV | `_data/publications.yml` |
 | Navigation and site URL | `_config.yml` |
 | Layout and reusable sections | `_layouts/default.liquid`, `_includes/` |
 | Colors, spacing, mobile layout | `assets/css/site.css` |
 
-The CV's Basics section reads `profile.yml`. Its Publications section reads `publications.yml`; do not copy publications into `cv.yml`. Social links reference fields in `profile.yml`, so changing the email or LinkedIn URL updates all uses automatically. The `name` field also controls which author name is emphasized.
+The CV's Overview and the homepage's About introduction read the summary in `profile.yml`. Its Publications section reads `publications.yml`; do not copy publications into `cv.yml`. Social links reference fields in `profile.yml`, so changing the email or LinkedIn URL updates all uses automatically. The `name` field also controls which author name is emphasized.
+
+### Update work experience
+
+Edit `work` in `_data/cv.yml`. Each role has `name` (company), `position`, `startDate`, `endDate`, `employmentType`, `location`, and `highlights`. Dates are quoted display strings, such as `"Feb 2025"` and `"Present"`; roles appear in YAML order, so put the most recent first.
+
+Each highlight has an `area` (capability heading), `text`, and boolean `featured`. The homepage shows only highlights marked `featured: true`; the CV shows all highlights. Both pages group highlights by `area`, preserving the order of first appearance. For the current role, keep one featured highlight per area so the homepage presents three capabilities without repeating every CV detail. Both pages use the shared `_includes/experience.html` template.
+
+Add or update a highlight once in YAML to update every relevant page. Use public, general descriptions of the work; keep internal project/client names, performance figures, and source documents out of published content. Describe prototypes as proofs of concept rather than production deployments. Update the shared professional summary separately in `_data/profile.yml` when the overall positioning changes.
 
 ### Add a publication
 

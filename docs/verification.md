@@ -52,12 +52,26 @@ The CV now uses section navigation, date/content columns, restrained headings, a
 - Production build and the Ruby verifier passed again after the styling/markup changes.
 - The CV was visually checked in actual 1280px, 390px, and 320px iframe/browser viewports; the mobile About and Publications layouts were also inspected. Section links and abstract disclosure were exercised in the in-app browser.
 - Responsive previews used a temporary generated-only HTML file, removed after inspection. No preview harness is included in the source or deployment.
-- Current stylesheet size: **9570 bytes**. The site still ships one stylesheet and no JavaScript. Browser resource totals in the earlier table were not remeasured for this visual revision.
+- Stylesheet size at this checkpoint: **9570 bytes**. The site still ships one stylesheet and no JavaScript. Browser resource totals in the earlier table were not remeasured for this visual revision.
+
+## Work experience content update
+
+Local verification recorded on 2026-10-31 (Asia/Taipei), before publication.
+
+- The homepage now places Work Experience before Selected Publications. The HTML CV places it after Overview and before Education, with a matching section navigation link.
+- One role and five highlights are maintained in `_data/cv.yml`, grouped into three capability areas. A shared include renders three featured highlights on the homepage and all five on the CV. The shared professional summary, top skills, and About introduction now reflect industry experience; the outdated ICLR review status is updated to ICLR 2025.
+- Public work descriptions use general technical terms, omit internal/client names and internal figures, and describe the web integration as a proof of concept. Source documents were not added. The downloadable PDF and publication data are unchanged.
+- Ruby 3.4.2 / Bundler 2.6.3 installed the existing frozen lockfile into `/tmp/website-work-gems`: 3 direct dependencies and 37 total gems. No dependency versions changed.
+- Production build and `scripts/verify.rb` passed. The verifier now checks shared summary/role details, capability headings, homepage highlight selection, section ordering, and the full-experience anchor, alongside the existing page/link/publication checks.
+- In an isolated source copy, changing a company and highlight containing HTML-sensitive characters, then adding featured and non-featured highlights, updated the expected pages. A build under `/preview` passed the same verifier; repository data was not altered by this fixture.
+- Homepage and CV screenshots were inspected at 1440px and 390px. Both pages also passed width/overflow and content-count checks at 1440px, 390px, and 320px in sandboxed iframes without script permission: three capability groups, three homepage highlights, five CV highlights, and no script nodes.
+- Keyboard Tab/Enter checks passed for the visible skip link, main-content focus, and the full-experience link. The homepage link and CV section link both navigate to the work section below the sticky header.
+- The temporary responsive preview was generated only under `_site/` and removed after verification. Browser screenshots remain outside the repository. Remote deployment has not been run for this update.
 
 ## Limits and release
 
 - The GitHub Actions workflow has not been executed remotely. Linux is included in the lockfile; local checks were on macOS. The release workflow must pass for the published commit.
 - External links were preserved and compared with source data; their destination content was not comprehensively audited.
-- Biography wording was preserved, including the existing “under review” sentence. Updating current personal/research information is separate editorial work.
+- Biography wording was preserved at the initial migration checkpoint. The work experience update above revises the introduction and ICLR publication status while retaining the existing education and personal background.
 - PDF edits remain manual. The old template demo routes are intentionally removed; the sitemap contains only the four main pages.
 - Release uses behavior-scoped commits rebased onto `origin/master`, followed by a normal push to `master`. Deployment results are recorded by GitHub Actions. The original site is recoverable from pre-migration commit `f2dfb6c`; reverting the migration restores the prior source and workflow.
