@@ -5,6 +5,7 @@
     <p class="cv-toc-label">On this page</p>
     <ul>
       <li><a href="#basics">Overview</a></li>
+      {% if cv.work.size > 0 %}<li><a href="#experience">Work Experience</a></li>{% endif %}
       {% if cv.education.size > 0 %}<li><a href="#education">Education</a></li>{% endif %}
       <li><a href="#publications">Publications</a></li>
       {% if cv.skills.size > 0 %}<li><a href="#skills">Skills</a></li>{% endif %}
@@ -27,6 +28,13 @@
         <dt>LinkedIn</dt><dd><a href="{{ profile.url | escape }}">View profile <span aria-hidden="true">↗</span></a></dd>
       </dl>
     </section>
+
+    {% if cv.work.size > 0 %}
+    <section id="experience" class="cv-section" aria-labelledby="experience-heading">
+      <h2 id="experience-heading">Work Experience</h2>
+      {% include experience.html entries=cv.work %}
+    </section>
+    {% endif %}
 
     {% if cv.education.size > 0 %}
     <section id="education" class="cv-section" aria-labelledby="education-heading">

@@ -17,6 +17,16 @@ permalink: /
   </div>
 </section>
 
+{% if site.data.cv.work.size > 0 %}
+<section class="home-experience" aria-labelledby="home-experience-heading">
+  <div class="section-heading">
+    <h2 id="home-experience-heading">Work Experience</h2>
+    <a class="section-link" href="{{ '/cv/' | relative_url }}#experience">View full experience <span aria-hidden="true">↗</span></a>
+  </div>
+  {% include experience.html entries=site.data.cv.work featured_only=true %}
+</section>
+{% endif %}
+
 <section class="selected-publications" aria-labelledby="selected-heading">
   <div class="section-heading">
     <h2 id="selected-heading"><a href="{{ '/publications/' | relative_url }}">Selected Publications</a></h2>

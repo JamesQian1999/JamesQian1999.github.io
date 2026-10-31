@@ -1,4 +1,43 @@
 ---
+work:
+- name: Perfect Corp.
+  position: Machine Learning Engineer
+  startDate: 'Feb 2025'
+  endDate: Present
+  employmentType: Full-time
+  location: Taiwan
+  highlights:
+  - area: Computer Vision Model Development & Integration
+    featured: true
+    text: >-
+      Trained an image-quality assessment model for challenging lighting conditions
+      through dataset curation, synthetic data generation, and model evaluation.
+      Integrated the model into a web-based proof of concept to address enterprise
+      client requirements.
+  - area: Computer Vision Model Development & Integration
+    featured: false
+    text: >-
+      Developed video analysis pipelines for person detection and camera tilt
+      estimation, combining model training, temporal post-processing, and server
+      integration.
+  - area: Computer Vision Model Development & Integration
+    featured: false
+    text: >-
+      Trained anchor-point and occlusion-mask models for virtual try-on, developed
+      annotation tools, and integrated inference results into server APIs.
+  - area: AI Agents & Recommendation Systems
+    featured: true
+    text: >-
+      Developed an AI agent for personalized recommendations, integrating visual
+      analysis, large language models, and image generation. Added multilingual
+      interfaces and report generation to support the complete user workflow.
+  - area: Cross-Platform Image & Video Engineering
+    featured: true
+    text: >-
+      Built and optimized a Python proof of concept for video face processing,
+      including metadata APIs and visual quality improvements. Ported and validated
+      image-processing features across Web, iOS, and Android, and adapted photo-based
+      controls for video workflows.
 volunteer:
 - organization: Taiwan Happy Coding Promotion Association
   position: Outreach Instructor

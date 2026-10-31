@@ -1,0 +1,23 @@
+{% for entry in include.entries %}
+  {% assign highlights = entry.highlights %}
+  {% if include.featured_only %}{% assign highlights = highlights | where: 'featured', true %}{% endif %}
+  {% if highlights.size > 0 %}
+  <article class="cv-entry work-entry">
+    <p class="entry-date">{{ entry.startDate | escape }} – {{ entry.endDate | escape }}</p>
+    <div>
+      <h3>{{ entry.position | escape }}</h3>
+      <p class="work-company">{{ entry.name | escape }}</p>
+      <p class="entry-description">{{ entry.employmentType | escape }} · {{ entry.location | escape }}</p>
+      {% assign areas = highlights | group_by: 'area' %}
+      {% for area in areas %}
+      <div class="work-area">
+        <h4>{{ area.name | escape }}</h4>
+        <ul class="work-highlights">
+          {% for highlight in area.items %}<li>{{ highlight.text | escape }}</li>{% endfor %}
+        </ul>
+      </div>
+      {% endfor %}
+    </div>
+  </article>
+  {% endif %}
+{% endfor %}
