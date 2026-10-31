@@ -3,8 +3,11 @@ name: Cheng Chien
 email: chengchien1999@gmail.com
 phone: "(886) 989819022"
 url: https://www.linkedin.com/in/cchien1999
-summary: I hold a degree in Computer Science with a strong specialization in machine
-  learning, focusing on image coding techniques and multimodal large language models.
+summary: >-
+  Machine Learning Engineer at Perfect Corp. with experience in computer vision model
+  development, AI agents, and image and video processing. My work spans data
+  preparation, model training and evaluation, and integration into web-based
+  prototypes and cross-platform applications.
 display_name: Cheng Chien 錢承
 location: Taipei, Taiwan
 photo: "/assets/img/prof_pic.jpg"

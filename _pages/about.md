@@ -8,7 +8,7 @@ permalink: /
   <div class="hero-content">
     <h1 id="home-heading">{{ site.data.profile.display_name | escape }}</h1>
     <p class="hero-eyebrow">Top Skills:</p>
-    <p class="hero-specialties">Machine Learning (ML), Computer Vision (CV), Image Compression, Multimodal Large Language Models (MLLM)</p>
+    <p class="hero-specialties">Machine Learning, Computer Vision, AI Agents &amp; Recommendation Systems, Image &amp; Video Processing</p>
     <a class="button button-primary hero-resume" href="{{ site.data.profile.cv_pdf | relative_url }}">CV / Resume <span aria-hidden="true">↓</span></a>
     {% include contact.html %}
   </div>
@@ -40,7 +40,9 @@ permalink: /
   <h2 id="about-heading">{{ page.title }}</h2>
   <div class="about-body" markdown="1">
 
-My name is Chien Cheng, and I hold a Master’s degree in Computer Science from [National Yang Ming Chiao Tung University](https://www.nycu.edu.tw/nycu/en/). My master’s research focuses on machine learning, computer vision, image compression, and multimodal large language models (MLLM). My master’s thesis, titled “[ComNeck: Bridging Compressed Image Latents and Multimodal LLMs via Universal Transform-Neck](https://hdl.handle.net/20.500.14371/3093),” combines learning-base image compression with a multimodal language model. This work has been submitted to the international conference ICLR and is currently under review.
+{{ site.data.profile.summary | escape }}
+
+I hold a Master’s degree in Computer Science from [National Yang Ming Chiao Tung University](https://www.nycu.edu.tw/nycu/en/). My master’s research focuses on machine learning, computer vision, image compression, and multimodal large language models (MLLM). My master’s thesis, titled “[ComNeck: Bridging Compressed Image Latents and Multimodal LLMs via Universal Transform-Neck](https://hdl.handle.net/20.500.14371/3093),” combines learning-based image compression with a multimodal language model. This research was published at ICLR 2025.
 
 During my graduate studies, I participated in several National Science and Technology Council (NSTC) projects and collaborated with my lab members to publish research in top-tier international conferences such as ICCV, APSIPA ASC, and ISCAS. Through these experiences, I developed strong technical skills, cooperation, and communication abilities. I am proficient in Python and experienced in using PyTorch to build the machine learning model, with expertise in handling the entire workflow from data preprocessing to model training. Additionally, I studied in the Philippines for three months after graduation, where I demonstrated my adaptability to new environments and my capability to perform independently across different cultures and languages. This further strengthened my ability to communicate, coordinate, and resolve issues in English.
 

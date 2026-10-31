@@ -74,10 +74,15 @@ skills:
 - name: Machine Learning
   level: Master
   keywords:
-  - Pytorch
+  - PyTorch
   - Multimodal Large Language Models
   - Image Coding for Machine
   - Image Compression
+- name: Applied AI
+  keywords:
+  - Computer Vision
+  - AI Agents & Recommendation Systems
+  - Image & Video Processing
 languages:
 - language: Mandarin
   fluency: Native speaker
