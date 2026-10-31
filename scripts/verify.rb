@@ -70,6 +70,43 @@ papers.each do |paper|
 end
 profile = YAML.safe_load_file(root.join("_data/profile.yml"))
 check.call(site.join(profile.fetch("cv_pdf").delete_prefix("/")).read(5) == "%PDF-", "CV download is not a PDF")
+check.call(home.include?(CGI.escapeHTML(profile.fetch("summary"))) && cv.include?(CGI.escapeHTML(profile.fetch("summary"))), "Shared professional summary missing from homepage/CV")
+
+resume = YAML.safe_load_file(root.join("_data/cv.yml"))
+work = resume.fetch("work", [])
+unless work.empty?
+  work_sections = {
+    "homepage" => home[/<section\b[^>]*aria-labelledby="home-experience-heading"[^>]*>.*?<\/section>/m],
+    "CV" => cv[/<section\b[^>]*id="experience"[^>]*>.*?<\/section>/m]
+  }
+  work_sections.each do |page, section|
+    check.call(section, "#{page}: missing Work Experience section")
+    next unless section
+
+    expected_count = 0
+    work.each do |entry|
+      highlights = entry.fetch("highlights")
+      highlights = highlights.select { |highlight| highlight.fetch("featured") } if page == "homepage"
+      next if highlights.empty?
+
+      %w[name position startDate endDate employmentType location].each do |field|
+        check.call(section.include?(CGI.escapeHTML(entry.fetch(field))), "#{page}: missing work #{field}")
+      end
+      highlights.group_by { |highlight| highlight.fetch("area") }.each do |area, items|
+        check.call(section.include?("<h4>#{CGI.escapeHTML(area)}</h4>"), "#{page}: missing capability #{area}")
+        items.each do |highlight|
+          check.call(section.include?("<li>#{CGI.escapeHTML(highlight.fetch('text'))}</li>"), "#{page}: missing work highlight in #{area}")
+        end
+      end
+      expected_count += highlights.size
+    end
+    check.call(section.scan(/<li>/).size == expected_count, "#{page}: incorrect work highlight selection/count")
+  end
+  check.call(home.include?("href=\"#{baseurl}/cv/#experience\""), "Homepage: missing full experience link")
+  check.call(cv.include?('href="#experience"'), "CV: missing experience navigation link")
+  check.call(home.index('aria-labelledby="home-experience-heading"').to_i < home.index('aria-labelledby="selected-heading"').to_i, "Homepage: experience must precede publications")
+  check.call(cv.index('id="basics"').to_i < cv.index('id="experience"').to_i && cv.index('id="experience"').to_i < cv.index('id="education"').to_i, "CV: experience must follow Overview and precede Education")
+end
 
 sitemap = REXML::Document.new(site.join("sitemap.xml").read)
 locations = REXML::XPath.match(sitemap, "//*[local-name()='loc']").map(&:text)
@@ -82,4 +119,4 @@ check.call(locations.none? { |url| url.include?("/assets/") || url.end_with?("/4
 check.call(locations.none? { |url| url.include?("/repositories/") }, "Sitemap includes removed Repositories page")
 
 abort errors.join("\n") unless errors.empty?
-puts "PASS: #{pages.size} pages, #{papers.size} publications, local references, anchors, PDF, sitemap, no Repositories page, and JavaScript-free output."
+puts "PASS: #{pages.size} pages, #{papers.size} publications, shared summary/work experience, local references, anchors, PDF, sitemap, no Repositories page, and JavaScript-free output."
