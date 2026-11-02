@@ -23,7 +23,6 @@
       <dl class="facts">
         <dt>Name</dt><dd>{{ profile.name | escape }}</dd>
         <dt>Email</dt><dd><a href="mailto:{{ profile.email | escape }}">{{ profile.email | escape }}</a></dd>
-        <dt>Phone</dt><dd>{{ profile.phone | escape }}</dd>
         <dt>Location</dt><dd>{{ profile.location | escape }}</dd>
         <dt>LinkedIn</dt><dd><a href="{{ profile.url | escape }}">View profile <span aria-hidden="true">↗</span></a></dd>
       </dl>
